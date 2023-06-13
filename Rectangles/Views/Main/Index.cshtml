@@ -1,0 +1,118 @@
+﻿@model List<Rectangles.ViewModels.RectangleViewModel>
+
+<div class="row">
+    <div class="col-12">
+         <div>
+             <br /> <br />
+             <h1 class="text-center">Hello everyone.</h1><br /> <br />
+             <h3>This service is designed to determine the coordinates of the main rectangle that encompasses the secondary rectangles.</h3> <br />
+         </div>
+
+
+        <h2 class="text-center p-xl-2">Enter the specifications for 6 rectangles</h2><br />
+        <br />
+        <h3 class="text-center p-xl-2">Table of characteristics of figures</h3><br />
+
+        <table border="1" cellpadding="8">
+            <tr>
+                <th class="text-center p-2">
+                    1. N
+                </th>
+
+                <th class="text-center p-2">
+                    2. Name
+                </th>
+
+                <th class="text-center p-2">
+                    3. Bottom left dot X
+                </th>
+
+                <th class="text-center p-2">
+                    4. Bottom left dot Y
+                </th>
+
+                <th class="text-center p-2">
+                    5. Top right dot X
+                </th>
+
+                <th class="text-center p-2">
+                    6. Top right dot Y
+                </th>
+
+                <th class="text-center p-2">
+                    5. Line color
+                </th>
+
+                <th class="text-center p-2">
+                    6. Fill color
+                </th>
+
+                <th class="text-center p-2">
+
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th class="text-center">
+                        @item.NumberRectangle
+                    </th>
+
+                    <th class="text-center">
+                        @item.NameRectangle
+                    </th>
+
+                    <th class="text-center">
+                        @item.BotLeftPointX
+                    </th>
+
+                    <th class="text-center">
+                        @item.BotLeftPointY
+                    </th>
+
+                    <th class="text-center">
+                        @item.TopRightPointX
+                    </th>
+
+                    <th class="text-center">
+                        @item.TopRightPointY
+                    </th>
+
+                    <th class="text-center">
+                        @item.ColorLineRectangle
+                    </th>
+
+                    <th class="text-center">
+                        @item.ColorBodyRectangle
+                    </th>
+
+                    <th class="text-center">
+
+                        <div class="w-100 btn-group text-center" role="group">
+                            <a asp-controller="Main" asp-action="Edit" asp-route-Id="@item.Id" class="btn btn-primary mx-8"><i class="fas fa-edit text-center"></i>Edit  &nbsp;</a>
+
+                            <a asp-controller="Main" asp-action="Delete" asp-route-Id="@item.Id" class="btn btn-danger mx-8"><i class="fas fa-trash-alt text-center"></i> Delete &nbsp; </a>
+                        </div>
+                    </th>
+                </tr>
+            }
+        </table>
+
+        <br /> <br />
+        @if (Model.Count() < 6)
+        {
+            <div class="col-12 text-center">
+                <div class="btn btn-primary buttonanimayion1" role="group">
+                    <a asp-controller="Main" asp-action="AddRectangle" class="btn btn-primary mx-8"><i class="fas fa-edit text-center"></i> Add Rectangle &nbsp;</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="text-center colorred">
+                <h4>The maximum number of rectangles is 6 pieces</h4>
+            </div>
+        }
+    </div>
+</div>

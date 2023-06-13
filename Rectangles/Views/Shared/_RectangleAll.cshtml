@@ -1,0 +1,109 @@
+﻿@model List<Rectangles.ViewModels.RectangleViewModel>
+
+<div>
+   <div class="block-right m-auto">
+       <div class="border ml-2">
+           <canvas id="canvasDrawing1"></canvas>
+       </div>
+   </div>   
+   
+   <div>
+       @{
+           double[] botLeftX = new double[@Model.Count()];
+           double[] botLeftY = new double[@Model.Count()];
+           double[] topRightXWidth = new double[@Model.Count()];
+           double[] topRightYHight = new double[@Model.Count()];
+           string[] colorLineValue = new string[@Model.Count()];
+           string[] colorBodyValue = new string[@Model.Count()];
+   
+       }
+   
+       @for (int i = 0; i < Model.Count(); i++)
+       {
+           botLeftX[i] = Model[i].BotLeftPointX;
+           botLeftY[i] = Model[i].BotLeftPointY;
+           topRightXWidth[i] = Model[i].TopRightPointX - Model[i].BotLeftPointX;
+           topRightYHight[i] = Model[i].TopRightPointY - Model[i].BotLeftPointY;
+           colorLineValue[i] = Model[i].ColorLineRectangle;
+           colorBodyValue[i] = Model[i].ColorBodyRectangle;
+       }
+   
+       @{
+           var botLeftXJson = Json.Serialize(botLeftX);
+       }
+   
+       @{
+           var botLeftYJson = Json.Serialize(botLeftY);
+       }
+   
+       @{
+           var topRightXWidthJson = Json.Serialize(topRightXWidth);
+       }
+   
+       @{
+           var topRightYHightJson = Json.Serialize(topRightYHight);
+       }
+   
+       @{
+           var colorLineValueJson = Json.Serialize(colorLineValue);
+       }
+   
+       @{
+           var colorBodyValueJson = Json.Serialize(colorBodyValue);
+       }
+   </div>
+   <div class="row">
+       <div class="col-12">
+           <script>
+               var canvasId = document.getElementById("canvasDrawing1");
+               var ctx = canvasId.getContext('2d');
+   
+               canvasId.width = 850;
+               canvasId.height = 850;
+   
+               var botLeftXJsons = JSON.parse('@Html.Raw(botLeftXJson)'); //var botLeftXJsons = JSON.parse('@Html.Raw(Json.Serialize(botLeftXJson))');
+               var botLeftYJsons = JSON.parse('@Html.Raw(botLeftYJson)');
+               var topRightXWidthJsons = JSON.parse('@Html.Raw(topRightXWidthJson)');
+               var topRightYHightJsons = JSON.parse('@Html.Raw(topRightYHightJson)');
+               var colorLineValueJsons = JSON.parse('@Html.Raw(colorLineValueJson)');
+               var colorBodyValueJsons = JSON.parse('@Html.Raw(colorBodyValueJson)');
+   
+               console.log(botLeftXJsons);
+               console.log(botLeftYJsons);
+               console.log(topRightXWidthJsons);
+               console.log(topRightYHightJsons);
+               console.log(colorLineValueJsons);
+               console.log(colorBodyValueJsons);
+   
+               var j = 0;
+               var countRectangles = 1;
+   
+               botLeftXJsons.forEach((item) => {
+                   if (countRectangles <= 5) {
+                       ctx.beginPath();
+                       ctx.rect(botLeftXJsons[j], botLeftYJsons[j], topRightXWidthJsons[j], topRightYHightJsons[j]);
+                       ctx.closePath();
+                       ctx.strokeStyle = "black"; //цвет линии
+                       ctx.fillStyle = "rgba(64, 224, 208, 0.5)"; //0.5 - прозрачность
+                       ctx.fill();
+                       ctx.lineWidth = 3;
+                       ctx.stroke();
+   
+                       console.log(ctx.strokeStyle);
+                   }
+                   else {
+                       ctx.beginPath();
+                       ctx.rect(botLeftXJsons[j], botLeftYJsons[j], topRightXWidthJsons[j], topRightYHightJsons[j]);
+                       ctx.closePath();
+                       ctx.strokeStyle = "brown"; //цвет линии
+                       ctx.lineWidth = 11;
+                       ctx.stroke();
+                       }
+                       j++;
+                       countRectangles++;
+               });
+           </script>
+       </div>    
+   </div>
+</div>
+     

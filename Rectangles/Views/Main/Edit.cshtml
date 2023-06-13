@@ -1,0 +1,126 @@
+﻿@model Rectangles.ViewModels.RectangleViewModel
+
+
+<form method="post">
+    <input asp-for="Id" hidden />
+    <div class="border p-3">
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Edit rectangle</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+
+                <div class="form-group row m-4">
+                    <div class="col-4">
+                        <label asp-for="NumberRectangle">1. Number: </label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="NumberRectangle" class="form-control" />
+                        <span asp-validation-for="NumberRectangle" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row m-4">
+                    <div class="col-4">
+                        <label asp-for="NameRectangle">2. Name: </label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="NameRectangle" class="form-control"/>
+                        <span asp-validation-for="NameRectangle" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row m-4">
+                    <div class="col-4">
+                        <label asp-for="BotLeftPointX">3. Bottom left point by X: </label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="BotLeftPointX" class="form-control" />
+                        <span asp-validation-for="BotLeftPointX" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row m-4">
+                    <div class="col-4">
+                        <label asp-for="BotLeftPointY">4. Bottom left point by Y: </label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="BotLeftPointY" class="form-control" />
+                        <span asp-validation-for="BotLeftPointY" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row m-4">
+                    <div class="col-4">
+                        <label asp-for="TopRightPointX">5. Top right point by X: </label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="TopRightPointX" class="form-control" />
+                        <span asp-validation-for="TopRightPointX" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row m-4">
+                    <div class="col-4">
+                        <label asp-for="TopRightPointY">6. Top right point by Y: </label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="TopRightPointY" class="form-control" />
+                        <span asp-validation-for="TopRightPointY" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row m-4">
+                    <div class="col-4">
+                        <label asp-for="ColorLineRectangle">7. Color line rectangle: </label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="ColorLineRectangle" class="form-control" />
+                        <span asp-validation-for="ColorLineRectangle" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row m-4">
+                    <div class="col-4">
+                        <label asp-for="ColorBodyRectangle">8. Color body rectangle: </label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="ColorBodyRectangle" class="form-control" />
+                        <span asp-validation-for="ColorBodyRectangle" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row m-4">
+                    <div class="col-8 offset-4 row">
+
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-100" value="Edit" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-success w-100"><i class="fas fa-sign-out-alt"></i> &nbsp; Back</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-4">
+                @* Keep this empty *@
+            </div>
+        </div>
+
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+    }
+
+
+
+
+
+
+
