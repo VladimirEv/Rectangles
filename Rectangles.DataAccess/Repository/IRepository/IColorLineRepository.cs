@@ -5,6 +5,6 @@ namespace Rectangles.DataAccess.Repository.IRepository
 {
     public interface IColorLineRepository : IRepository<ColorLine>
     {
-
+        
     }
 }
